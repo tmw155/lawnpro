@@ -341,8 +341,13 @@
     }
 
     .reveal {
-      opacity: 0; transform: translateY(24px);
+      opacity: 1;
+      transform: translateY(0);
       transition: opacity .6s ease-out, transform .6s ease-out;
+    }
+    .reveal.hidden {
+      opacity: 0;
+      transform: translateY(24px);
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -719,17 +724,23 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Scroll reveal
+    // Scroll reveal — add hidden first so content is visible without JS
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {
         if (entry.isIntersecting) {
-          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          setTimeout(() => {
+            entry.target.classList.remove('hidden');
+            entry.target.classList.add('visible');
+          }, i * 80);
           observer.unobserve(entry.target);
         }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    reveals.forEach(el => observer.observe(el));
+    reveals.forEach(el => {
+      el.classList.add('hidden');
+      observer.observe(el);
+    });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(a => {
