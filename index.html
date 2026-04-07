@@ -24,6 +24,26 @@
   <!-- Canonical -->
   <link rel="canonical" href="https://lawnproapp.com/"/>
 
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="manifest.json"/>
+
+  <!-- Theme color -->
+  <meta name="theme-color" content="#3a6a3a"/>
+  <meta name="msapplication-TileColor" content="#1e3a1e"/>
+
+  <!-- Apple PWA meta tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="LawnPro"/>
+  <link rel="apple-touch-icon" href="icon-192.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="icon-152.png"/>
+  <link rel="apple-touch-icon" sizes="144x144" href="icon-144.png"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png"/>
+  <link rel="icon" type="image/svg+xml" href="icon.svg"/>
+  <link rel="shortcut icon" href="favicon.png"/>
+
   <!-- Privacy-friendly analytics by Plausible -->
   <script async src="https://plausible.io/js/pa-gxnp9bd5ddXFYouXMCSbp.js"></script>
   <script>
@@ -793,6 +813,17 @@
     </div>
   </footer>
 
+  <!-- PWA Install Banner -->
+  <div id="installBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;background:linear-gradient(135deg,#1e3a1e,#3a6a3a);color:#fff;padding:16px 20px;z-index:999;align-items:center;gap:14px;box-shadow:0 -4px 20px rgba(0,0,0,.3);">
+    <div style="font-size:28px">🌿</div>
+    <div style="flex:1">
+      <div style="font-size:14px;font-weight:700;margin-bottom:2px">Install LawnPro</div>
+      <div style="font-size:12px;opacity:.75">Add to your home screen for the best experience</div>
+    </div>
+    <button onclick="installApp()" style="background:#a8e06a;color:#1e3a1e;border:none;border-radius:30px;padding:9px 18px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;">Install App</button>
+    <button onclick="document.getElementById('installBanner').style.display='none'" style="background:rgba(255,255,255,.15);color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;">✕</button>
+  </div>
+
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Scroll reveal — add hidden first so content is visible without JS
     const reveals = document.querySelectorAll('.reveal');
@@ -824,4 +855,48 @@
       document.getElementById('emailForm').style.display = 'none';
       document.getElementById('emailSuccess').style.display = 'block';
       // Console log for now — wire to your email service API here
-      console.
+      console.log('New email subscriber:', email, '| Total:', stored.length);
+    }
+
+    // Register service worker for PWA
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('[LawnPro] SW registered:', reg.scope))
+          .catch(err => console.warn('[LawnPro] SW failed:', err));
+      });
+    }
+
+    // PWA install prompt
+    let deferredPrompt;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      setTimeout(() => {
+        const banner = document.getElementById('installBanner');
+        if (banner) banner.style.display = 'flex';
+      }, 15000);
+    });
+
+    function installApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(choice => {
+          deferredPrompt = null;
+          const banner = document.getElementById('installBanner');
+          if (banner) banner.style.display = 'none';
+        });
+      }
+    }
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+  </script>
+</body>
+</html>

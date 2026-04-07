@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background circle -->
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a1e"/>
+      <stop offset="100%" style="stop-color:#3a6a3a"/>
+    </linearGradient>
+    <linearGradient id="leaf" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a8e06a"/>
+      <stop offset="100%" style="stop-color:#6ab830"/>
+    </linearGradient>
+    <linearGradient id="arc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8e06a"/>
+      <stop offset="100%" style="stop-color:#6ab830"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
+
+  <!-- Subtle inner glow -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="rgba(168,224,106,0.08)" stroke-width="60"/>
+
+  <!-- Score arc ring (outer) -->
+  <circle cx="256" cy="256" r="170" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="24"/>
+
+  <!-- Score arc (partial) - about 78% filled to suggest a good score -->
+  <circle cx="256" cy="256" r="170"
+    fill="none"
+    stroke="url(#arc)"
+    stroke-width="24"
+    stroke-linecap="round"
+    stroke-dasharray="836 1069"
+    stroke-dashoffset="267"
+    transform="rotate(-90 256 256)"/>
+
+  <!-- Center leaf / grass blade cluster -->
+  <!-- Main tall blade -->
+  <path d="M256 340 Q256 260 238 190 Q250 230 256 260 Q262 230 274 190 Q256 260 256 340Z"
+    fill="url(#leaf)" opacity="0.95"/>
+
+  <!-- Left blade -->
+  <path d="M256 330 Q240 270 210 210 Q235 255 248 290 Q250 310 256 330Z"
+    fill="url(#leaf)" opacity="0.75"/>
+
+  <!-- Right blade -->
+  <path d="M256 330 Q272 270 302 210 Q277 255 264 290 Q262 310 256 330Z"
+    fill="url(#leaf)" opacity="0.75"/>
+
+  <!-- Far left blade -->
+  <path d="M248 325 Q228 280 195 240 Q224 270 240 300 Q244 314 248 325Z"
+    fill="url(#leaf)" opacity="0.5"/>
+
+  <!-- Far right blade -->
+  <path d="M264 325 Q284 280 317 240 Q288 270 272 300 Q268 314 264 325Z"
+    fill="url(#leaf)" opacity="0.5"/>
+
+  <!-- Ground line -->
+  <rect x="180" y="336" width="152" height="6" rx="3" fill="url(#leaf)" opacity="0.6"/>
+
+  <!-- Small soil dots -->
+  <circle cx="210" cy="350" r="4" fill="rgba(168,224,106,0.35)"/>
+  <circle cx="232" cy="354" r="3" fill="rgba(168,224,106,0.25)"/>
+  <circle cx="256" cy="356" r="4" fill="rgba(168,224,106,0.35)"/>
+  <circle cx="280" cy="354" r="3" fill="rgba(168,224,106,0.25)"/>
+  <circle cx="302" cy="350" r="4" fill="rgba(168,224,106,0.35)"/>
+
+  <!-- Score text hint in top -->
+  <text x="256" y="148" text-anchor="middle" font-family="serif" font-weight="bold"
+    font-size="52" fill="rgba(255,255,255,0.85)">LP</text>
+</svg>
