@@ -3,8 +3,30 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LawnPro — AI-Powered Lawn Care</title>
-  <meta name="description" content="LawnPro uses AI to analyze your lawn, detect grass type, score health, and deliver personalized care plans with expert product recommendations."/>
+  <title>LawnPro — AI-Powered Lawn Care App</title>
+  <meta name="description" content="Upload a photo of your lawn and get an instant AI health score, grass type detection, and a personalized care plan. Free to start."/>
+  <meta name="keywords" content="lawn care app, lawn health, grass type detector, lawn analysis, lawn care tips, lawn fertilizer, lawn watering schedule"/>
+  <meta name="author" content="LawnPro"/>
+
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://tmw155.github.io/lawnpro/"/>
+  <meta property="og:title" content="LawnPro — AI-Powered Lawn Care"/>
+  <meta property="og:description" content="Upload a photo of your lawn and get an instant health score, grass type detection, and personalized care plan. Free to start."/>
+  <meta property="og:image" content="https://tmw155.github.io/lawnpro/og-image.png"/>
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="LawnPro — AI-Powered Lawn Care"/>
+  <meta name="twitter:description" content="AI lawn health scores, grass detection, and personalized care plans. Free to start."/>
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://tmw155.github.io/lawnpro/"/>
+
+  <!-- Plausible Analytics — privacy-friendly, no cookies, GDPR compliant -->
+  <!-- Replace 'tmw155.github.io' with your custom domain once you have one -->
+  <script defer data-domain="tmw155.github.io" src="https://plausible.io/js/script.js"></script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
@@ -256,7 +278,7 @@
     .badge-affiliate { background: #e0eedd; color: #3a6a3a; border: 1px solid #b0d4b0; }
     .product-why { font-size: 13px; color: var(--muted); line-height: 1.5; }
     .product-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; }
-    .product-price { font-size: 16px; font-weight: 700; color: var(--sage-d); }
+    .product-price { font-size: 13px; font-weight: 500; color: var(--sage); text-decoration: underline; text-underline-offset: 3px; }
     .product-btn {
       background: var(--sage-d); color: #fff; border: none; border-radius: 30px;
       padding: 8px 18px; font-size: 13px; font-weight: 700; cursor: pointer;
@@ -267,6 +289,13 @@
     .affiliate-disclosure {
       text-align: center; margin-top: 28px; font-size: 12px; color: var(--muted); line-height: 1.6;
     }
+    .email-capture { display: flex; gap: 0; max-width: 440px; margin: 0 auto; }
+    .email-capture-input { flex: 1; padding: 15px 20px; border: 2px solid rgba(255,255,255,.2); border-right: none; border-radius: 50px 0 0 50px; font-size: 15px; font-family: 'DM Sans', sans-serif; background: rgba(255,255,255,.1); color: #fff; outline: none; transition: border-color .2s; }
+    .email-capture-input::placeholder { color: rgba(255,255,255,.45); }
+    .email-capture-input:focus { border-color: rgba(168,224,106,.5); }
+    .email-capture-btn { background: var(--lime); color: #1a321a; border: none; border-radius: 0 50px 50px 0; padding: 15px 24px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: 'DM Sans', sans-serif; white-space: nowrap; transition: background .15s; }
+    .email-capture-btn:hover { background: #c8f080; }
+    @media (max-width: 480px) { .email-capture { flex-direction: column; } .email-capture-input { border-right: 2px solid rgba(255,255,255,.2); border-bottom: none; border-radius: 50px 50px 0 0; } .email-capture-btn { border-radius: 0 0 50px 50px; } }
 
     /* ── Pricing ── */
     .pricing-section { background: var(--cream); }
@@ -386,7 +415,7 @@
 
       <div class="hero-ctas">
         <a href="#features" class="btn-primary">See How It Works</a>
-        <a href="#pricing" class="btn-secondary">View Plans →</a>
+        <a href="https://buy.stripe.com/test_28EeVe0hng6Y60UgwO9bO00" target="_blank" rel="noopener noreferrer" class="btn-secondary">Start Free Trial →</a>
       </div>
 
       <div class="hero-stats">
@@ -529,7 +558,7 @@
           </div>
           <p class="product-why">Boosts nitrogen for a deeper, lasting green color. Recommended for nitrogen-deficient lawns.</p>
           <div class="product-footer">
-            <div class="product-price">$24.99</div>
+            <div class="product-price">Check current price →</div>
             <a href="https://amzn.to/4txdODr" target="_blank" rel="noopener noreferrer sponsored" class="product-btn">Shop Now</a>
           </div>
         </div>
@@ -544,8 +573,8 @@
           </div>
           <p class="product-why">Fast-germinating seed blend designed specifically for patchy, bare areas.</p>
           <div class="product-footer">
-            <div class="product-price">$18.99</div>
-            <a href="#" class="product-btn">Shop Now</a>
+            <div class="product-price">Check current price →</div>
+            <a href="https://amzn.to/3QlGoJq" target="_blank" rel="noopener noreferrer" class="product-btn">Shop Now</a>
           </div>
         </div>
 
@@ -559,8 +588,8 @@
           </div>
           <p class="product-why">Diagnose your exact soil pH and nutrient levels before treating.</p>
           <div class="product-footer">
-            <div class="product-price">$12.99</div>
-            <a href="#" class="product-btn">Shop Now</a>
+            <div class="product-price">Check current price →</div>
+            <a href="https://amzn.to/4bVUIkk" target="_blank" rel="noopener noreferrer" class="product-btn">Shop Now</a>
           </div>
         </div>
 
@@ -574,8 +603,8 @@
           </div>
           <p class="product-why">Weather-based smart irrigation that saves up to 50% on water usage.</p>
           <div class="product-footer">
-            <div class="product-price">$49.99</div>
-            <a href="#" class="product-btn">Shop Now</a>
+            <div class="product-price">Check current price →</div>
+            <a href="https://amzn.to/4mb5oiF" target="_blank" rel="noopener noreferrer sponsored" class="product-btn">Shop Now</a>
           </div>
         </div>
       </div>
@@ -626,7 +655,7 @@
             <div class="plan-feature"><div class="plan-check">✓</div>PDF report export</div>
             <div class="plan-feature"><div class="plan-check">✓</div>Priority support</div>
           </div>
-          <button class="plan-cta">Start Free Trial →</button>
+          <a href="https://buy.stripe.com/test_28EeVe0hng6Y60UgwO9bO00" target="_blank" rel="noopener noreferrer" class="plan-cta" style="display:block;text-align:center;text-decoration:none;">Start Free Trial →</a>
         </div>
       </div>
     </div>
@@ -681,6 +710,43 @@
     </div>
   </section>
 
+  <!-- ── EMAIL CAPTURE ── -->
+  <section class="section" style="background: linear-gradient(155deg, #1e3a1e 0%, #3a6a3a 50%, #5a8a4a 100%); padding: 80px 24px;">
+    <div class="section-inner" style="text-align: center; max-width: 600px; margin: 0 auto;">
+      <div class="reveal">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:rgba(168,224,106,.8);font-weight:700;margin-bottom:16px;">Stay in the loop</div>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,44px);font-weight:700;color:#fff;line-height:1.1;margin-bottom:14px;">
+          Get seasonal lawn tips,<br/><span style="color:#a8e06a;">free.</span>
+        </h2>
+        <p style="font-size:16px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:36px;font-weight:300;">
+          Join thousands of homeowners getting expert lawn care advice delivered to their inbox — tailored to their region and the current season.
+        </p>
+
+        <form id="emailForm" style="margin-bottom:16px;" onsubmit="handleEmailSubmit(event)">
+          <div class="email-capture">
+            <input class="email-capture-input" type="email" id="captureEmail" placeholder="Enter your email address" required/>
+            <button class="email-capture-btn" type="submit">Get Free Tips →</button>
+          </div>
+        </form>
+        <div id="emailSuccess" style="display:none;background:rgba(168,224,106,.15);border:1px solid rgba(168,224,106,.3);border-radius:50px;padding:12px 24px;color:#a8e06a;font-size:14px;font-weight:600;margin-bottom:16px;">
+          ✓ You're in! Check your inbox for your first tips.
+        </div>
+
+        <div style="display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:16px;">
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.55);">
+            <span>✓</span> No spam, ever
+          </div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.55);">
+            <span>✓</span> Unsubscribe anytime
+          </div>
+          <div style="display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.55);">
+            <span>✓</span> Seasonal tips for your region
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-inner">
@@ -701,10 +767,10 @@
         <div>
           <div class="footer-col-title">Legal</div>
           <div class="footer-links">
-            <a href="#" class="footer-link">Privacy Policy</a>
-            <a href="#" class="footer-link">Terms of Service</a>
-            <a href="#" class="footer-link">Affiliate Disclosure</a>
-            <a href="#" class="footer-link">Cookie Policy</a>
+            <a href="privacy.html" class="footer-link">Privacy Policy</a>
+            <a href="terms.html" class="footer-link">Terms of Service</a>
+            <a href="affiliate.html" class="footer-link">Affiliate Disclosure</a>
+            <a href="mailto:hello@lawnproapp.com" class="footer-link">Contact Us</a>
           </div>
         </div>
         <div>
@@ -742,6 +808,19 @@
       observer.observe(el);
     });
 
-    // Smooth scroll for anchor links
+    // Email capture
+    function handleEmailSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('captureEmail').value;
+      if (!email) return;
+      // Store locally (replace with your email service e.g. Mailchimp, Resend, ConvertKit)
+      const stored = JSON.parse(localStorage.getItem('lp_email_list') || '[]');
+      if (!stored.includes(email)) stored.push(email);
+      localStorage.setItem('lp_email_list', JSON.stringify(stored));
+      document.getElementById('emailForm').style.display = 'none';
+      document.getElementById('emailSuccess').style.display = 'block';
+      // Console log for now — wire to your email service API here
+      console.log('New email subscriber:', email, '| Total:', stored.length);
+    }
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventList
